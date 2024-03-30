@@ -1,4 +1,5 @@
-import validation, validators, ipaddress, json
+import validation, validators, ipaddress, json, typing
+from typing import Tuple, Union
 from ipaddress import IPv4Address, IPv4Network
 
 class Validation:
@@ -36,7 +37,7 @@ class Validation:
     
     # this method was taken from one of my project
     @staticmethod
-    def ip_range_blacklist(ip) -> tuple[bool ,str]:
+    def ip_range_blacklist(self, ip: str) -> Tuple[bool, Union[str, None]]:
 
         with open("data/blacklist.json") as e:
             data = json.load(e)
