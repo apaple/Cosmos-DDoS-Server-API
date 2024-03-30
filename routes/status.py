@@ -1,4 +1,4 @@
-import validation, datetime, paramiko, psutil
+import validation, datetime, paramiko
 from flask import * 
 from routes.decorators import RouteDecorators
 from urllib.parse import urlparse
@@ -15,9 +15,6 @@ Status = Blueprint("Status", __name__)
 def status():
     return {
         "code": 200,
-        "cpu": psutil.cpu_percent(),
-        "used_ram": psutil.virtual_memory().percent,
-        "unsued_ram": psutil.virtual_memory().available * 100 / psutil.virtual_memory().total
     }
 
     
