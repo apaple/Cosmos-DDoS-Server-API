@@ -1,1 +1,8 @@
 aiohttp
+flask
+waitress
+paramiko
+validators
+validation
+bleach
+discord_webhook
