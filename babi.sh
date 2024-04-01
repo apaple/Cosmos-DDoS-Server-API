@@ -46,4 +46,3 @@ npm add prompt-sync
 chmod u+x *
 ulimit -n 99999
 sudo screen -dmS ls
-node bot
