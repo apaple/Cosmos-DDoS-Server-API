@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     if PRODUCTION:
         print(Fore.GREEN, "API server started.", Fore.RESET)
-        serve(app, host="0.0.0.0", port=5000) # change port here if you want
+        serve(app, host="0.0.0.0", port=80) # change port here if you want
     else:
         Thread(target=app.run, kwargs={"threaded":True}).start()
         Thread(target=run_cleanup_task).start()
