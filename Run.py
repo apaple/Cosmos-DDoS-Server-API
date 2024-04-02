@@ -36,7 +36,7 @@ def basic_error(e):
 def run_cleanup_task():
     while True:
         os.system('rm -f proxy.txt && python3 main.py')
-        time.sleep(600)  # 600 seconds = 10 minutes
+        time.sleep(120)  # 600 seconds = 10 minutes
         
 
 if __name__ == "__main__":
